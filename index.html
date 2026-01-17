@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ting Wu | PhD Candidate in Epidemiology & Biostatistics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a0dad;
+            --primary-light: #9b4dca;
+            --primary-dark: #4b0082;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fefefe;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* .profile-img样式 */
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 1.5rem;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-light);
+            background: rgba(255,255,255,0.95);
+            box-shadow: var(--shadow);
+            overflow: hidden; /* 添加这个以确保图片不溢出 */
+        }
+
+        /* 图片在.profile-img容器内的样式 */
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例并填充容器 */
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: #e0c3fc;
+            text-decoration: underline;
+        }
+
+        /* 主体内容 */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 3px solid var(--primary-light);
+            display: inline-block;
+        }
+
+        .section-content {
+            margin-top: 1.5rem;
+        }
+
+        /* 教育背景 */
+        .edu-item {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .edu-date {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .edu-school {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        /* 研究兴趣 */
+        .research-interests p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* 论文 */
+        .pub-item {
+            margin-bottom: 1.8rem;
+            padding: 1.5rem;
+            background-color: var(--gray-light);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .pub-item:hover {
+            border-left-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .pub-authors {
+            color: #555;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pub-venue span {
+            background-color: #e9ecef;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .pub-links {
+            margin-top: 0.8rem;
+        }
+
+        .pub-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .pub-links a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* 荣誉奖项 */
+        .awards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .award-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .award-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .award-source {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .award-year {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #e0c3fc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .edu-header {
+                flex-direction: column;
+            }
+            .awards-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="container header-content">
+            <!-- 修改后的头像部分，支持img标签 -->
+            <div class="profile-img">
+                <!-- 如果使用图片 -->
+                <img src="profile.jpg" alt="Ting Wu">
+                <!-- 如果你想在没有图片时显示图标 -->
+                <!-- <i class="fas fa-user-md"></i> -->
+            </div>
+            <h1>Ting Wu</h1>
+            <p class="subtitle">PhD Candidate in Epidemiology & Biostatistics</p>
+            <p class="subtitle">Peking University School of Public Health</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-orcid"></i>
+                    <a href="https://orcid.org/0000-0003-1227-0270" target="_blank" rel="noopener noreferrer">
+                        0000-0003-1227-0270
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:TinytWu@bjmu.edu.cn">TinytWu@bjmu.edu.cn</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Haidian District, Beijing, China 100191</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 教育背景 -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="section-content">
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <div class="edu-degree">Ph.D. in Epidemiology and Biostatistics</div>
+                        <div class="edu-date">Sep 2025 - Present (Expected Jun 2029)</div>
+                    </div>
+                    <div class="edu-school">Peking University, Beijing, China</div>
+                    <p>PhD Candidate</p>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <div class="edu-degree">M.S. in Epidemiology and Biostatistics</div>
+                        <div class="edu-date">Sep 2023 - Jun 2025</div>
+                    </div>
+                    <div class="edu-school">Peking University, Beijing, China</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <div class="edu-degree">B.M. in Preventive Medicine</div>
+                        <div class="edu-date">Sep 2018 - Jun 2023</div>
+                    </div>
+                    <div class="edu-school">Peking University, Beijing, China</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究兴趣 -->
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="section-content research-interests">
+                <p>My research focuses on elucidating the etiology of cardiometabolic diseases by integrating multi-omics data (proteomics, metabolomics) within large-scale population cohorts. I employ Mendelian randomization and other causal inference methods to identify and validate novel biomarkers for disease risk prediction, aiming to inform early prevention and precision public health strategies.</p>
+            </div>
+        </section>
+
+        <!-- 发表论文 -->
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            <div class="section-content">
+                <div class="pub-item">
+                    <div class="pub-title">Associations between circulating proteins and cardiometabolic diseases: a systematic review and meta-analysis of observational and Mendelian randomisation studies</div>
+                    <div class="pub-authors"><strong>Wu T</strong>*, Ke Y*, Li Y, Wu Z, Lv J, Yu C, Sun D, Yao P, Kartsonaki C, Chen Z, Li L, Pang Y*</div>
+                    <div class="pub-venue">
+                        <span>Heart, 2024</span>
+                        <span>JCR Q1, IF = 4.4</span>
+                    </div>
+                    <div class="pub-links">
+                        <a href="https://heart.bmj.com/content/110/20/1208.long" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Association between early life exposure to the great famine and possible sarcopenia in older Chinese adults: a national cross-sectional study</div>
+                    <div class="pub-authors"><strong>Wu T</strong>, Yan X*, Liu Y, Ma N, Dang J, Zhong P, Shi D, Cai S, Cheng H, Song Y*, Lau PWC</div>
+                    <div class="pub-venue">
+                        <span>BMJ Open, 2023</span>
+                        <span>JCR Q2, IF = 2.3</span>
+                    </div>
+                    <div class="pub-links">
+                        <a href="https://bmjopen.bmj.com/content/13/3/e065240" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Associations of plasma metabolites with mortality in Chinese adults: a prospective study</div>
+                    <div class="pub-authors"><strong>Wu T</strong>, Song S, Pang Y, Yu C, Sun D, Pei P, Du H, Chen J, Chen Z, Pan A, Lv J, Li L*</div>
+                    <div class="pub-venue">
+                        <span>Chinese Journal of Epidemiology, 2025</span>
+                        <span>中文核心期刊</span>
+                    </div>
+                    <div class="pub-links">
+                        <a href="https://rs.yiigle.com/cmaid/1539214" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 荣誉奖项 -->
+        <section id="honors">
+            <h2>Honors & Awards</h2>
+            <div class="section-content">
+                <div class="awards-container">
+                    <div class="award-item">
+                        <div class="award-name">Excellent Graduate, Peking University</div>
+                        <div class="award-source">Peking University</div>
+                        <div class="award-year">2025</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name">First Prize in "Challenge Cup" Academic Competition</div>
+                        <div class="award-source">33rd Challenge Cup, Peking University</div>
+                        <div class="award-year">2025</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name">Outstanding Research Award</div>
+                        <div class="award-source">National Health Commission & Daiichi Sankyo</div>
+                        <div class="award-year">2024</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name">Merit Student</div>
+                        <div class="award-source">Peking University</div>
+                        <div class="award-year">2024</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name">Award for Scientific Research</div>
+                        <div class="award-source">Peking University</div>
+                        <div class="award-year">2023</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-name">May Fourth Scholarship</div>
+                        <div class="award-source">Peking University</div>
+                        <div class="award-year">2022</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:TinytWu@bjmu.edu.cn"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/TinytW" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p class="copyright">© 2025 Ting Wu. All Rights Reserved.</p>
+            <p class="copyright">Last Updated: December 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互效果：点击导航平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 论文项悬停效果增强
+        document.querySelectorAll('.pub-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
